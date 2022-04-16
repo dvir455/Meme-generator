@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/editor.css">
+    <link rel="stylesheet" href="css/media.css">
+    <title>Ultimate Meme Generator</title>
+  </head>
+  <body>
+    <section class="main-container">
+      <header class="main-header">
+        <div class="logo-container">
+         <img class="logo" src="icons/logo.svg" onclick="toggleEditor('gallery')"/>
+        </div>
+        <nav class="main-nav">
+            <button class="hamburger">☰</button>
+            <div class="black-screen" onclock="close-hamburger"></div>
+          <ul class="nav-bar">
+            <li><a href="#" onclick="toggleEditor('gallery')"> Gallery</a></li>
+            <li><a href="#" onclick="toggleEditor('memes')">Memes</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="search-bar">
+        <input type="text" placeholder="Search for meme's by tags" oninput="onFilterBy(this)"></input>
+      </div>
+      <div class="gallery-container">
+      </div>
+      <section class="editor-container" >
+        <div class="canvas-container">
+          <div class="back-btn" onclick="toggleEditor('gallery')">Back to gallery</div>
+
+<canvas id="canvas"></canvas>
+
+        </div>
+        <div class="canvas-editor"> 
+          <div class="edit-header">
+            <h1>Edit Text lines  </h1>
+            <div class="line-settings">  
+              <div class="text-movment"><span onclick="onMoveLine(-15)" class="up-arrow">↑</span><span onclick="onMoveLine(15)" class="down-arrow">↓</span></div> 
+              <div class="line-indicator"><span class="line-indicator-left"></span>/<span class="line-indicator-right"></span></div>
+              <img src="/icons/next.svg" onclick="selectLine()">
+                <img src="/icons/add.svg" onclick="onAddTextLine()" >
+                <img src="/icons/delete.svg" onclick="onDeleteTextLine()">
+            </div>
+          </div>
+
+          <div class="edit-area">
+            <div class="text-settings">
+              <select class="font-type">
+                <option value="impact">Impact</option>
+              </select>
+              <img src="icons/a-minus.svg" onclick="onEditMemeTextSize(false)" >
+              <img src="icons/a-plus.svg" onclick="onEditMemeTextSize(true)" >
+              <p class="spacer">|</p>
+              <img src="icons/left-to-right.svg" onclick="onSetMemeAlign('right')">
+              <img src="icons/center.svg" onclick="onSetMemeAlign('center')">
+              <img src="icons/right-to-left.svg" onclick="onSetMemeAlign('left')">
+              <p class="spacer">|</p>
+              <img src="icons/outline.svg" onclick="onToggleStroke()">
+              <div class="color-pick">
+                <input type="color" class="text-color" onchange="onMemeColorChange()">
+                <img src="icons/color.svg" onclick="changeColor()">
+              </div>
+
+            </div>
+            <textarea class="text-zone" oninput="onEditMemeText()" placeholder="Change Text"></textarea>
+            
+          </div>
+          <div class="emoji-area">
+            <span>😍</span>
+            <span>😎</span>
+            <span>😛</span>
+            <span>🥵</span>
+            <span>🤬</span>
+            <span>👾</span>
+            <span>🤖</span>
+            <span>❤</span>
+            <span>💘</span>
+            <span>💥</span>
+          </div>
+          <div class="share-options">
+            <a href="#" class="canvas-download share-option" onclick="downloadCanvas(this)">Download Canvas</a>
+            <a href="#" class="save-meme share-option" onclick="onSaveMemeToGallery()">Save meme to Gallery</a>
+            <a href="#" class="share-meme share-option" onclick="uploadImg()">Generate share link</a>
+        
+
+          </div>
+        </div>
+      </section>
+      <section class="memes-gallery">
+
+
+
+      </section>
+    </section>
+    
+    <div class="share-container"></div>
+<script src="js/meme-gallery.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/upload-service.js"></script>
+    <script src="js/services/meme.services.js"></script>
+    <script src="js/services/editor.sevices.js"></script>
+    <script src="js/editor.contoller.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

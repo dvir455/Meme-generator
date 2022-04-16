@@ -1,0 +1,57 @@
+@media screen and (max-width: 680px) {
+  .hamburger {
+    display: block;
+    margin-inline-end: 2rem;
+  }
+
+  .nav-bar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    right: -100%;
+    top: 0;
+    height: 100vh;
+    background-color: #f8f8f8;
+    font-size: 2rem;
+  }
+  .nav-bar > * {
+    margin: 1rem;
+  }
+
+  .nav-bar.showNav {
+    right: 0;
+    animation-name: opacity;
+    animation-duration: 0.5s;
+  }
+
+  .black-screen.active-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.637);
+    height: 100vh;
+    width: 100%;
+
+    animation-name: opacity;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes opacity {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+}
+
+
+@media screen and (max-width: 1000px) {
+.editor-container{
+  grid-template-columns: 1fr;
+
+}
+}
