@@ -132,11 +132,11 @@ let gMeme = {
     {
       txt: 'Enter MEME',
       size: 35,
-      align: 'center',
       color: 'red',
       x: 0,
       y: 0,
       font: 'Impact',
+      align: 'center',
       stroke: true,
     },
   ],
@@ -227,13 +227,17 @@ function addTextLine(x, y, txt = 'MEME LINE') {
   gMeme.lines.push({
     txt: txt,
     size: 35,
-    align: 'center',
     color: 'white',
     x,
     y,
     font: 'Impact',
+    align: 'center',
     stroke: true,
   });
+}
+
+function setFont(font){
+gMeme.lines[gMeme.selectedLineIdx].font = font;
 }
 
 function setChosenLine(state) {

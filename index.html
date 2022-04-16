@@ -52,8 +52,9 @@
 
           <div class="edit-area">
             <div class="text-settings">
-              <select class="font-type">
+              <select class="font-type" onchange="onSetFont()">
                 <option value="impact">Impact</option>
+                <option value="roboto">Roboto</option>
               </select>
               <img src="icons/a-minus.svg" onclick="onEditMemeTextSize(false)" >
               <img src="icons/a-plus.svg" onclick="onEditMemeTextSize(true)" >

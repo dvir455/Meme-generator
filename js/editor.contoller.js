@@ -73,7 +73,7 @@ function createImage(meme, isFirstTime = false) {
         35,
         gElCanvas.width / 2,
         gElCanvas.height / 7,
-        'Impact',
+        'Impact'
       );
       setMemePos(gElCanvas.width / 2, gElCanvas.height / 7);
       resetMemeTextSize();
@@ -141,6 +141,14 @@ function onAddTextLine() {
   renderEdit();
 }
 
+function setFontSelect() {
+  let selectedFont;
+  const font = document.querySelector('.font-type');
+  const meme = getMeme();
+  selectedFont = meme.lines[meme.selectedLineIdx].font;
+  font.value = selectedFont;
+}
+
 function onMoveLine(diff) {
   moveLine(diff);
   renderEdit();
@@ -158,6 +166,7 @@ function selectLine() {
     lineIndicatorLeft.innerHTML = `${meme.selectedLineIdx + 1}`;
   }
   textArea.value = meme.lines[meme.selectedLineIdx].txt;
+  setFontSelect();
 }
 
 function changeColor() {
@@ -207,7 +216,11 @@ function onSaveMemeToGallery() {
   SaveMemeToGallery();
 }
 
-
+function onSetFont() {
+  const font = document.querySelector('.font-type').value;
+  setFont(font);
+  renderEdit();
+}
 
 function uploadImg() {
   const imgDataUrl = gElCanvas.toDataURL('image/jpeg');
@@ -221,12 +234,9 @@ function uploadImg() {
         <a class="share-meme" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
         Generate share link 
         </a>`;
-    
   }
   doUploadImg(imgDataUrl, onSuccess);
-
 }
-
 
 function doUploadImg(imgDataUrl, onSuccess) {
   const formData = new FormData();
@@ -239,7 +249,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
     .then((res) => res.text())
     .then((url) => {
       onSuccess(url);
-      shareBtn.classList.add('share-ready')
+      shareBtn.classList.add('share-ready');
     })
     .catch((err) => {
       console.error(err);
